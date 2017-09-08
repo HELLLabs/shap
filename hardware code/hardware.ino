@@ -8,11 +8,17 @@
  int ac =6;//output to ac
  int controlNode=5;//as a input recieve from controlNode
  int emergency=4;//as a input recieve from controlNode
+
+
+ //section for declaring variables
  long int timer = 10000,ir_timer=0;
  unsigned int millis_v= 0,past = 0,loop_time = 0;
  int time_set_value = 0 , temper_value = 0,motion_detect = 0 , switch_status = 2 , emergency_v = 0 ;
  int readPins[7];
- void setup()//defines all the in modes
+ //..............................
+
+ 
+ void setup()//defines all pins in their modes
   {
     pinMode(motionDetector,INPUT);
     pinMode(emergency,INPUT);
@@ -49,7 +55,7 @@ int personsleep(int status)// function for night sleeping
 }
 
 
-int personin() function for person in the room
+int personin() //function for person in the room
 { 
   timer = 1800000;
   return 0;
@@ -70,7 +76,7 @@ void loop()// main body of the program
 {
 
    //--------------------------------------------------------------------------
-   // this part can manege timer variable
+   // this part can manaage timer variable
    //--------------------------------------------------------------------------
    readPins[0] =digitalRead(controlNode);
    readPins[1] =digitalRead(gshutsensor);
@@ -97,7 +103,7 @@ void loop()// main body of the program
    else
    {
      //--------------------------------------------------------------------------
-     // this part can manege timer variable
+     // this part can manage timer variable
      //--------------------------------------------------------------------------
    
      //--------------------------------------------------------------------------
@@ -127,7 +133,7 @@ void loop()// main body of the program
 
 
      //--------------------------------------------------------------------------
-     // this part can manege the calculation
+     // this part can manage the calculation
      //--------------------------------------------------------------------------
         if((readPins[1] == 0 && readPins[2] == 1)||(readPins[1] == 0 && readPins[2] == 0 && readPins[3] == 1))//for tempring if any 
         {
@@ -159,7 +165,7 @@ void loop()// main body of the program
           temper_value = 0;
         }
         // this is for person is in side the room
-        else if (readPins[5] == 1||(readPins[1] == 1 && readPins[2] == 0 && readPins[3] == 0 && readPins[5] == 1)||(readPins[1] == 0 && readPins[2] == 0 && readPins[3] == 0 && readPins[4] == 0 && readPins[5] == 1))
+        else if (readPins[5] == 1||(readPins[1] == 1 && readPins[2] == 0 && readPins[3] == 0 && readPins[5] == 1)||(readPins[1] == 0 && readPins[2] == 0 && readPins[3] == 0 && readPins[4] == 1 && readPins[5] == 1))
         {
           time_set_value = personin();
           motion_detect = 1;
@@ -172,12 +178,12 @@ void loop()// main body of the program
           //all_off();
           temper_value = 0;
         }
-     //--------------------------------------------------------------------------
+     //-------------------------------------------------------------------------------------------------
      // end of the calculation part
-     //--------------------------------------------------------------------------
-     //--------------------------------------------------------------------------
-     // this part for the on/off the devices
-     //-------------------------------------------------------------------------- 
+     //-------------------------------------------------------------------------------------------------
+     //-------------------------------------------------------------------------------------------------
+     // this part for the on/off the devices after checking values of the variables according to values
+     //-------------------------------------------------------------------------------------------------
         Serial.print("values:");
         Serial.print(temper_value);
         Serial.print(",");
@@ -185,7 +191,7 @@ void loop()// main body of the program
         Serial.print(",");
         Serial.println(timer);
         //delay(1000);
-        if(temper_value == 0){
+        if(temper_value == 0){  //it checks for on condition and the turns on the lights and fan
              if (emergency_v == 1)
               {
                 
@@ -204,7 +210,7 @@ void loop()// main body of the program
                         switch_status = 1;
                       }
                    }
-                  else
+                  else // it checks for conditions from the sensors and then turns off th appliances
                    {
                      if (switch_status != 0)
                      {
@@ -214,7 +220,7 @@ void loop()// main body of the program
                    }
                }
          }
-        else{
+        else{   // it checks for the temper conditons  and immediately switch off appliances
           digitalWrite(temper,1);
           if(switch_status != 0)
           {
