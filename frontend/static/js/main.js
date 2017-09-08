@@ -16,6 +16,7 @@ $(document).ready(function(){
     if (m["tamper"] == "0"){$(".tamper-alert").css("visibility", "hidden");soundFx[0].pause();soundFx[0].currentTime=0;}
     if (m["bstatus"] == "1"){$(".loader").css("visibility", "hidden");}
     if (m["bstatus"] == "0"){$(".loader").css("visibility", "visible");}
+    if (m["meter"]>1){$("#reading").text(Math.round(m["meter"]/32)); $("#cost").text(Math.round(m["meter"]/32*7));}
   });
   $("#master").change(function(){
     if($(this).is(":checked")){
