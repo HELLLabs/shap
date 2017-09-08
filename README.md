@@ -10,5 +10,7 @@ Mega watts and Giga watts of power/energy is being wasted, majorly in the transm
 - Solar panels used and motivated etc.
 
 **But these do not work in commercial environment, primarily because they’re meant for self consumption or the regular home usage.**
-
+---
 So, with a motto of **do one thing and do it best**, we've created our project's very first avatar for use in hostels/commercial buildings!
+
+For more info, kindly reach us at (mailto:info@helllabs.in)[our email here].
