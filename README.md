@@ -1,5 +1,5 @@
-# s'hap - a home automation project that really saves energy! ⚡️
----
+# s'hap - a home automation project that really saves energy!
+
 ### the problem.
 Mega watts and Giga watts of power/energy is being wasted, majorly in the transmission and distribution process, due to electricity theft, ancient technology usage, unavailability of funds, expensive energy saving appliances and due to the carelessness of citizens.
 
